@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap Icons CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <title>Portfolio</title>
+    <style>
+        @font-face {
+            font-family: myfont;
+            src: url(fonts/Hello.ttf);
+        }
+
+        @font-face {
+            font-family: myfont2;
+            src: url(fonts/AppleGaramond-Light.ttf);
+        }
+
+        body {
+            background-color: #2ea7ac;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            animation: popIn 1s ease-out forwards;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        h1,
+        .title,
+        .social-icons {
+            opacity: 0;
+            animation: fadeSlideIn 1s ease-out forwards 0.5s;
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .head {
+            font-family: myfont;
+            font-size: 5rem;
+            margin-bottom: 30px;
+
+        }
+
+        .title {
+            font-family: myfont2;
+            font-size: 1.5rem;
+            margin-top: -45px;
+            margin-bottom: 35px;
+        }
+
+        .social-icons a {
+            color: white;
+
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .social-icons {
+
+            font-size: 2rem;
+        }
+
+        .title {
+            display: flex;
+            justify-content: space-between;
+            width: 25%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="images/7f64ad85-4bbc-4a4d-9fcf-b90907c30027_inPixio.png" alt="Profile Picture" class="profile-pic">
+        <h1 class="head"> - Naveen - </h1>
+        <p class="title">
+            Information Technology Grad
+            <span>~</span>
+            <span>Web Developer</span>
+        </p>
+
+
+
+
+        <div class="social-icons">
+            <a href="https://www.instagram.com/____.naveen.___/"><span><i class="bi bi-instagram fs-1"></i></span></a>
+            <a href="https://github.com/naveenmayathevar"><span><i class="bi bi-github"></i></span></a>
+            <a href="mailto:naveenmayathevar@gmail.com"><span><i class="bi bi-envelope"></i></span></a>
+            <a href="https://www.linkedin.com/in/naveen-mayathevar-b905a1218/"><span><i class="bi bi-linkedin"></i></span></a>
+
+        </div>
+    </div>
+</body>
+
+</html>
