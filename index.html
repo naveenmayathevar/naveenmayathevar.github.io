@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter&family=Lato&family=Montserrat&family=Poppins&display=swap"
+        rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<!-- landing page -->
+<style>
+    @font-face {
+        font-family: myfont;
+        src: url(fonts/Hello.ttf);
+    }
+
+    @font-face {
+        font-family: myfont2;
+        src: url(fonts/AppleGaramond-Light.ttf);
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        scroll-behavior: smooth;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: #2ea7ac;
+        color: #fff;
+        text-align: center;
+        overflow-x: hidden;
+    }
+
+    .scroll-container {
+        height: 100vh;
+        overflow-y: scroll;
+
+    }
+
+    section {
+        min-height: auto;
+        scroll-snap-align: none;
+    }
+
+
+
+    .landing {
+        background-color: #2ea7ac;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        opacity: 0;
+        transform: scale(0.8);
+        animation: fadeIn 1s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .profile-pic {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid white;
+        animation: popIn 1s ease-out forwards;
+    }
+
+    @keyframes popIn {
+        0% {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .head {
+        font-family: myfont;
+        font-size: 5rem;
+        margin-bottom: 30px;
+    }
+
+    .title {
+        font-family: myfont2;
+        font-size: 1.5rem;
+        margin-top: -45px;
+        margin-bottom: 35px;
+        opacity: 0;
+        animation: fadeSlideIn 1s ease-out forwards 0.5s;
+    }
+
+    .social-icons {
+        font-size: 2rem;
+        opacity: 0;
+        animation: fadeSlideIn 1s ease-out forwards 0.5s;
+    }
+
+    .social-icons a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+    }
+
+    @keyframes fadeSlideIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+<!-- navebar -->
+<style>
+    .navbar {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(255, 255, 255, 0.85);
+        color: #333;
+        padding: 10px 30px;
+        border-radius: 30px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        font-family: myfont2;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .nav-center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    .nav-link,
+    #theme-toggle {
+        font-size: 1rem;
+        text-decoration: none;
+        color: inherit;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .nav-link:hover,
+    #theme-toggle:hover {
+        color: #2ea7ac;
+    }
+
+    /* === DARK THEME === */
+    body.dark {
+        background-color: #121212;
+        color: #fff;
+    }
+
+    body.dark .navbar {
+        background-color: rgba(33, 33, 33, 0.9);
+        color: white;
+    }
+
+    body.dark .about-me,
+    body.dark .timeline-section {
+        background-color: #1f1f1f;
+        color: #ccc;
+    }
+
+    body.dark .timeline-item {
+        background-color: #2a2a2a;
+    }
+
+    body.dark h3 {
+        color: #f5f5f5;
+
+    }
+
+    body.dark .timeline-year {
+        color: #ccc;
+
+    }
+</style>
+<!-- about me and timeline -->
+<style>
+    .about-me {
+        background-color: #ffffff;
+        color: #333;
+        padding: 60px 20px 40px;
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        animation: fadeInSlide 1s ease-out;
+    }
+
+    @keyframes fadeInSlide {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .about-heading {
+        font-size: 3rem;
+        font-family: 'myfont';
+        /* margin-bottom: 30px; */
+        background: linear-gradient(90deg, #2ea7ac, #20b2aa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .about-card {
+        max-width: 900px;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+    }
+
+    body.dark .about-card {
+        background-color: #121212;
+    }
+
+    .about-card:hover {
+        transform: scale(1.02);
+    }
+
+    body.dark .about-card p {
+        color: white;
+    }
+
+    .about-card p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #444;
+        margin: 0;
+    }
+
+    .timeline-section {
+        padding: 60px 20px;
+        background: #fff;
+        color: #333;
+        font-family: myfont2;
+        text-align: center;
+    }
+
+    .timeline-title {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+
+    .timeline p h3 {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        position: relative;
+    }
+
+    .timeline-item {
+        position: relative;
+        width: 90%;
+        max-width: 600px;
+        background-color: #f5f5f5;
+        border-left: 6px solid;
+        padding: 20px 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+
+    .timeline-item.red {
+        border-color: #e74c3c;
+    }
+
+    .timeline-item.blue {
+        border-color: #3498db;
+    }
+
+    .timeline-year {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #555;
+    }
+
+    .timeline-content h3 {
+        margin-top: 0;
+        font-size: 1.3rem;
+        color: #2c3e50;
+    }
+
+    .timeline-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+
+    .timeline-cgpa {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #333;
+    }
+
+    body.dark .timeline-cgpa {
+        color: #ccc;
+    }
+</style>
+<!-- skill -->
+<style>
+    .skills-section {
+        background-color: #f9f9f9;
+        padding: 80px 20px;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .section-title {
+        font-size: 2.8rem;
+        color: #2ea7ac;
+        margin-bottom: 50px;
+    }
+
+    .skills-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .skills-category {
+        background-color: white;
+        border-radius: 15px;
+        padding: 30px 25px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s ease;
+        text-align: left;
+    }
+
+    .skills-category:hover {
+        transform: translateY(-8px);
+    }
+
+    .skills-category h3 {
+        color: #2ea7ac;
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
+    .skills-category p {
+        font-size: 1rem;
+        color: #444;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    body.dark .skills-section {
+        background-color: #1f1f1f;
+    }
+
+    body.dark .skills-category {
+        background-color: #2a2a2a;
+    }
+
+    body.dark .skills-category h3 {
+        color: #2ea7ac;
+    }
+
+    body.dark .skills-category p {
+        color: #ccc;
+    }
+</style>
+<!-- project -->
+<style>
+    .projects-section {
+        background-color: #f9f9f9;
+        padding: 80px 20px;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    .project-card {
+        background-color: white;
+        border-radius: 15px;
+        padding: 25px 30px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s ease;
+        text-align: left;
+    }
+
+    .project-card:hover {
+        transform: translateY(-8px);
+    }
+
+    .project-header h3 {
+        font-size: 1.4rem;
+        color: #2ea7ac;
+        margin-bottom: 10px;
+    }
+
+    .project-desc {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 15px;
+    }
+
+    .tech-tags {
+        margin-bottom: 15px;
+    }
+
+    .tech-tags span {
+        display: inline-block;
+        background-color: #2ea7ac;
+        color: white;
+        font-size: 0.85rem;
+        padding: 5px 10px;
+        border-radius: 20px;
+        margin: 3px;
+    }
+
+    .project-links a {
+        display: inline-block;
+        background-color: #2ea7ac;
+        color: white;
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 8px 15px;
+        border-radius: 8px;
+        margin-right: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    .project-links a:hover {
+        background-color: #238b91;
+    }
+
+    body.dark .projects-section {
+        background-color: #1f1f1f;
+    }
+
+    body.dark .project-card {
+        background-color: #2a2a2a;
+    }
+
+    body.dark .project-header h3 {
+        color: #2ea7ac;
+    }
+
+    body.dark .project-desc,
+    body.dark .tech-tags span {
+        color: #ccc;
+    }
+
+    body.dark .tech-tags span {
+        background-color: #2ea7ac;
+    }
+</style>
+<!-- contact form -->
+<style>
+    .contact-section {
+        background-color: #f9f9f9;
+        padding: 80px 20px;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+    }
+
+    .contact-title {
+        font-size: 2.5rem;
+        color: #2ea7ac;
+        margin-bottom: 10px;
+    }
+
+    .contact-text {
+        font-size: 1.1rem;
+        color: #666;
+        margin-bottom: 40px;
+        padding: 0 10px;
+    }
+
+    .contact-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 50px;
+        max-width: 1100px;
+        margin: auto;
+        text-align: left;
+        padding: 0 15px;
+    }
+
+    .contact-form {
+        flex: 1 1 350px;
+        max-width: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .form-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background: transparent;
+        outline: none;
+        transition: 0.3s ease;
+    }
+
+    .form-group label {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        background-color: #f9f9f9;
+        padding: 0 5px;
+        font-size: 1rem;
+        color: #999;
+        transition: 0.3s ease;
+        pointer-events: none;
+    }
+
+    .form-group input:focus+label,
+    .form-group input:not(:placeholder-shown)+label,
+    .form-group textarea:focus+label,
+    .form-group textarea:not(:placeholder-shown)+label {
+        top: -10px;
+        left: 10px;
+        font-size: 0.8rem;
+        color: #2ea7ac;
+    }
+
+    .contact-form button {
+        background-color: #2ea7ac;
+        color: white;
+        font-size: 1rem;
+        padding: 12px 0;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .contact-form button:hover {
+        background-color: #238b91;
+    }
+
+    .contact-info {
+        flex: 1 1 280px;
+        font-size: 1rem;
+        color: #444;
+        padding-top: 15px;
+    }
+
+    .contact-info a {
+        color: #2ea7ac;
+        text-decoration: none;
+    }
+
+    .contact-icons {
+        margin-top: 15px;
+        font-size: 1.6rem;
+    }
+
+    .contact-icons a {
+        margin-right: 15px;
+        color: #2ea7ac;
+        transition: transform 0.3s ease;
+    }
+
+    .contact-icons a:hover {
+        transform: scale(1.2);
+    }
+
+    /* Responsive Layout Fixes */
+    @media (max-width: 768px) {
+        .contact-container {
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .contact-form,
+        .contact-info {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .contact-title {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar">
+        <div class="nav-center">
+            <a href="#Home" class="nav-link"> Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <button id="theme-toggle" aria-label="Toggle Theme">🌓</button>
+        </div>
+    </nav>
+    <main class="scroll-container">
+        <!-- landing -->
+        <section class="landing" id="Home">
+            <div class="container">
+                <img src="images/7f64ad85-4bbc-4a4d-9fcf-b90907c30027_inPixio.png" alt="Profile Picture"
+                    class="profile-pic">
+                <h1 class="head"> - Naveen - </h1>
+
+
+
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/____.naveen.___/"><span><i
+                                class="bi bi-instagram fs-1"></i></span></a>
+                    <a href="https://github.com/naveenmayathevar"><span><i class="bi bi-github"></i></span></a>
+                    <a href="mailto:naveenmayathevar@gmail.com"><span><i class="bi bi-envelope"></i></span></a>
+                    <a href="https://www.linkedin.com/in/naveen-mayathevar-b905a1218/"><span><i
+                                class="bi bi-linkedin"></i></span></a>
+
+                </div>
+            </div>
+        </section>
+        <!-- about me -->
+        <section id="about" class="about-me">
+            <h2 class="about-heading">About <span>Me</span></h2>
+            <div class="about-card">
+                <p>
+                    I’m a tech enthusiast and aspiring full-stack developer currently pursuing my Master’s in
+                    Information Technology at Arizona State University. With hands-on experience from academic projects
+                    and a recent internship, I’ve built web applications using Python, Flask, JavaScript, and HTML/CSS.
+                    I enjoy learning new technologies and applying them to solve real-world problems—whether it’s
+                    intuitive interfaces or machine learning solutions. I'm currently focused on growing as a developer,
+                    building impactful projects, and sharpening both my frontend and backend skills.
+                </p>
+            </div>
+        </section>
+        <!-- timeline -->
+        <section class="timeline-section">
+            <div class="timeline">
+                <div class="timeline-item red">
+                    <div class="timeline-header">
+                        <div class="timeline-year">2019 – 2023</div>
+                        <div class="timeline-cgpa">CGPA: 8.86 / 10</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Bachelor of Technology in Computer Science and Engineering</h3>
+                        <p>
+                            Graduated from SRM Institute of Science & Technology with a strong academic record and a
+                            CGPA of 8.86/10. Developed core competencies in algorithms, data structures, object-oriented
+                            programming, operating systems, computer networks, and database systems.
+                        </p>
+                        <p>
+                            Supplemented theoretical learning through hands-on labs, coding assignments, and team-based
+                            projects that emphasized real-world application and collaborative problem-solving. This
+                            period laid a solid foundation for my full-stack and software development journey.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item blue">
+                    <div class="timeline-header">
+                        <div class="timeline-year">2024</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Web Application Developer Intern – Indra Institute of Education</h3>
+                        <p>
+                            Contributed to the design and development of a full-stack web application for managing
+                            student and staff enrollment. Built core features using Python, HTML, CSS, and JavaScript to
+                            streamline course assignments, daily attendance tracking, and academic workflows.
+                        </p>
+                        <p>
+                            Collaborated in an agile team environment, participated in sprint planning and code reviews,
+                            and contributed to the development of backend logic and database integration. The system
+                            improved administrative efficiency by over 30% and provided hands-on experience in building
+                            scalable and maintainable web solutions.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="timeline-item red">
+                    <div class="timeline-header">
+                        <div class="timeline-year">2024 – 2026</div>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Master’s in Information Technology – Arizona State University</h3>
+                        <p>
+                            Currently pursuing my Master’s degree with a concentration in web development, machine
+                            learning, and software engineering. My coursework covers advanced topics such as cloud
+                            computing, data analytics, and scalable backend systems.
+                        </p>
+                        <p>
+                            I’m actively building academic and personal projects that involve real-time data processing,
+                            Flask-based web apps, and applied machine learning models—sharpening both my problem-solving
+                            and full-stack development skills.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- skill -->
+        <section class="skills-section" id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-wrapper">
+                <div class="skills-category">
+                    <h3>Languages</h3>
+                    <p>Python, JavaScript, HTML, CSS, SQL</p>
+                </div>
+                <div class="skills-category">
+                    <h3>Frameworks & Libraries</h3>
+                    <p>Flask, Django, Bootstrap, TensorFlow, Keras</p>
+                </div>
+                <div class="skills-category">
+                    <h3>Web & APIs</h3>
+                    <p>Full-Stack Development, RESTful APIs, Responsive Design</p>
+                </div>
+                <div class="skills-category">
+                    <h3>Machine Learning</h3>
+                    <p>Deep Learning, ResNet, Data Augmentation, Model Deployment</p>
+                </div>
+                <div class="skills-category">
+                    <h3>Cloud & Tools</h3>
+                    <p>AWS, Git & GitHub, Docker, Tableau, Postman</p>
+                </div>
+                <div class="skills-category">
+                    <h3>Database</h3>
+                    <p>MySQL, PostgreSQL, MongoDB, Data Preprocessing</p>
+                </div>
+            </div>
+        </section>
+        <!-- project -->
+        <section class="projects-section" id="projects">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Satellite Image Classification</h3>
+                        <p class="project-desc">A deep learning model that classifies satellite images using ResNet,
+                            achieving over 90% accuracy.</p>
+                    </div>
+                    <div class="tech-tags">
+                        <span>Python</span>
+                        <span>TensorFlow</span>
+                        <span>ResNet</span>
+                        <span>Deep Learning</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://drive.google.com/file/d/1rBIXVa2b17KNjKYWtcizbah-e5L8If57/view"
+                            target="_blank">📜 Certificate</a>
+                        <a href="https://drive.google.com/file/d/1XSeKC1ZVC_bWcdcw0MGp0aZVov55Kaog/view?usp=drive_link"
+                            target="_blank">📄 Report</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>E-Commerce Web App</h3>
+                        <p class="project-desc">A responsive e-commerce platform with integrated product listings, cart
+                            features, and secure checkout.</p>
+                    </div>
+                    <div class="tech-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Python</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/naveenmayathevar/e-commerce" target="_blank">🔗 GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Student Enrollment System</h3>
+                        <p class="project-desc">An academic web platform to manage student registration, course
+                            assignments, and daily attendance.</p>
+                    </div>
+                    <div class="tech-tags">
+                        <span>Flask</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>MySQL</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- contact -->
+        <section class="contact-section" id="contact">
+            <h2 class="contact-title">Let's Connect</h2>
+            <p class="contact-text">Have a question, a project, or just want to chat? Drop a message below — I’d love to
+                hear from you!</p>
+
+            <div class="contact-container">
+                <form class="contact-form" action="https://formspree.io/f/xyzwybqy" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" required>
+                        <label>Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" required>
+                        <label>Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="5" required></textarea>
+                        <label>Your Message</label>
+                    </div>
+                    <input type="hidden" name="_gotcha" style="display:none">
+                    <input type="hidden" name="_redirect" value="https://your-website.com/thank-you.html">
+                    <button type="submit">Send Message</button>
+                </form>
+
+                <div class="contact-info">
+                    <p><strong>Email:</strong> <a
+                            href="mailto:naveenmayathevar@gmail.com">naveenmayathevar@gmail.com</a></p>
+                    <p><strong>Location:</strong> Phoenix, AZ</p>
+                    <div class="contact-icons">
+                        <a href="https://www.instagram.com/____.naveen.___/" target="_blank"><i
+                                class="bi bi-instagram"></i></a>
+                        <a href="https://github.com/naveenmayathevar" target="_blank"><i class="bi bi-github"></i></a>
+                        <a href="https://www.linkedin.com/in/naveen-mayathevar-b905a1218/" target="_blank"><i
+                                class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+    </main>
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+        });
+    </script>
+
+</body>
