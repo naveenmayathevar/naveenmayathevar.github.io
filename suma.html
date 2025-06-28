@@ -8,7 +8,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter&family=Lato&family=Montserrat&family=Poppins&display=swap"
         rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
     <title>Naveen</title>
 </head>
 <!-- landing page -->
@@ -23,21 +23,17 @@
         src: url(fonts/AppleGaramond-Light.ttf);
     }
 
-    @font-face {
-        font-family: myfont3;
-        src: url(fonts/Inter-VariableFont_opsz\,wght.ttf);
+    html {
+        scroll-behavior: smooth;
     }
-
-
-
 
     html,
     body {
         margin: 0;
         padding: 0;
-        height: auto;
+        height: 100%;
         scroll-behavior: smooth;
-        overflow-x: hidden;
+        overflow: hidden;
         font-family: Arial, sans-serif;
     }
 
@@ -49,8 +45,8 @@
     }
 
     .scroll-container {
-        height: auto;
-        overflow-y: auto;
+        height: 100vh;
+        overflow-y: scroll;
 
     }
 
@@ -146,7 +142,7 @@
         }
     }
 </style>
-<!-- navbar -->
+<!-- navebar -->
 <style>
     .navbar {
         position: fixed;
@@ -159,9 +155,8 @@
         border-radius: 30px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         z-index: 1000;
-        font-family: myfont3;
+        font-family: myfont2;
         transition: background-color 0.3s, color 0.3s;
-        font-size: .5rem;
     }
 
     .nav-center {
@@ -215,17 +210,11 @@
 
     body.dark .timeline-year {
         color: #ccc;
+
     }
 </style>
 <!-- about me  -->
 <style>
-    .about-me {
-        margin-bottom: 0;
-        /* Remove any margin pushing down */
-        padding-bottom: 40px;
-        /* or reduce padding if it's too large */
-    }
-
     .about-me {
         background-color: #f9f9f9;
         color: #333;
@@ -289,243 +278,111 @@
 </style>
 <!-- timeline -->
 <style>
-    .timeline-clean-section {
-        background-color: #f9f9f9;
+  .timeline-creative-wrapper {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 0;
+  }
 
+  .timeline-creative-wrapper::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background: linear-gradient(to bottom, #2ea7ac, #20b2aa);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .timeline-creative-item {
+    padding: 20px 30px;
+    position: relative;
+    width: 50%;
+  }
+
+  .timeline-creative-item.left {
+    left: 0;
+  }
+
+  .timeline-creative-item.right {
+    left: 50%;
+  }
+
+  .timeline-creative-content {
+    background: white;
+    padding: 30px;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .timeline-creative-item::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    width: 20px;
+    height: 20px;
+    background: #2ea7ac;
+    border: 4px solid white;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .timeline-creative-item.left::before {
+    right: -10px;
+  }
+
+  .timeline-creative-item.right::before {
+    left: -10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .timeline-creative-wrapper::after {
+      left: 10px;
     }
-
-    .timeline-circle {
-        top: 100px;
-    }
-
-    .timeline-circle1 {
-        top: 540px;
-    }
-
-    .timeline-circle2 {
-        top: 900px;
-    }
-
-    .timeline-clean-section {
-        margin-top: 0;
-        padding-top: 40px;
-    }
-
-    .timeline-creative-wrapper {
-        position: relative;
-        max-width: 1000px;
-        margin: auto;
-        padding: 60px 20px;
-    }
-
-    .timeline-circle,
-    .timeline-circle1,
-    .timeline-circle2 {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 40px;
-        height: 40px;
-        background-color: #2ea7ac;
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        z-index: 3;
-    }
-
-
-    .timeline-circle:hover,
-    .timeline-circle1:hover,
-    .timeline-circle2:hover {
-        transform: translate(-50%, 0) scale(1.1);
-        transition: transform 0.2s ease;
-    }
-
-
-
-    .timeline-creative-wrapper::before {
-
-        content: '';
-        position: absolute;
-        top: 10;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 2px;
-        height: 100%;
-        background: linear-gradient(to bottom, #2ea7ac, #20b2aa);
-        box-shadow: 0 0 10px #2ea7ac;
-        z-index: 1;
-    }
-
-
-
 
     .timeline-creative-item {
-        width: 50%;
-        position: relative;
-        padding: 40px 30px;
-        box-sizing: border-box;
+      width: 100%;
+      padding-left: 40px;
+      padding-right: 25px;
+      margin-bottom: 30px;
     }
 
+    .timeline-creative-item.right,
     .timeline-creative-item.left {
-        left: 0;
-        text-align: right;
+      left: 0;
     }
 
-    .timeline-creative-item.right {
-        left: 50%;
-        text-align: left;
+    .timeline-creative-item.left::before,
+    .timeline-creative-item.right::before {
+      left: 0;
     }
+  }
 
-    .timeline-creative-content {
-        background: white;
-        padding: 25px 30px;
-        border-radius: 20px;
-        position: relative;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-        z-index: 2;
-    }
+  body.dark .timeline-creative-content {
+    background: #252525;
+    color: white;
+  }
 
-    .timeline-creative-content p {
-        font-size: 1rem;
-        line-height: 1.8;
-        font-family: 'Courier New', Courier, monospace;
-        color: #444;
-    }
-
-    .timeline-creative-content strong {
-        font-weight: 600;
-        font-size: 1.05rem;
-    }
-
-
-    /* .timeline-creative-item::after {
-        content: attr(data-icon);
-        position: absolute;
-        top: 30px;
-        width: 40px;
-        height: 40px;
-        background: #2ea7ac;
-        color: #fff;
-        font-size: 18px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 3;
-        box-shadow: 0 0 15px #2ea7ac;
-    } */
-
-    .timeline-creative-item.left::after {
-        right: -20px;
-    }
-
-    .timeline-creative-item.right::after {
-        left: -20px;
-    }
-
-    .timeline-clean-year {
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: #2ea7ac;
-        margin-bottom: 10px;
-    }
-
-    .timeline-clean-heading {
-        font-size: 2.5rem;
-        text-align: center;
-        color: #2ea7ac;
-        font-family: 'myfont';
-        margin-bottom: 30px;
-    }
-
-    .timeline-creative-content p {
-        font-size: 1rem;
-        line-height: 1.7;
-        color: #444;
-    }
-
-    /* Mobile View */
-
-    @media screen and (max-width: 768px) {
-        .timeline-creative-wrapper::before {
-            left: 40px;
-            transform: none;
-        }
-
-        .timeline-circle {
-            left: 20px;
-            top: 100px;
-            transform: none;
-        }
-
-        .timeline-circle1 {
-            left: 20px;
-            top: 450px;
-            transform: none;
-
-        }
-
-        .timeline-circle2 {
-            left: 20px;
-            top: 850px;
-            transform: none;
-
-        }
-
-        .timeline-creative-item {
-            width: 100%;
-            padding: 0 20px 0 70px;
-            /* room for circle */
-            margin: 0 auto 40px;
-            text-align: left;
-            position: relative;
-        }
-
-        .timeline-creative-item.left,
-        .timeline-creative-item.right {
-            left: 0;
-            text-align: left;
-        }
-
-        .timeline-creative-content {
-            padding: 0px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        }
-    }
-
-
-    /* Dark Mode */
-    body.dark .timeline-creative-content {
-        background-color: #252525;
-        color: #ddd;
-    }
-
-    body.dark .timeline-clean-year {
-        color: #2ea7ac;
-    }
+  body.dark .timeline-clean-year {
+    color: #2ea7ac;
+  }
 </style>
 <!-- skill -->
 <style>
     .skills-section {
         background-color: #f9f9f9;
-        padding: 150px 20px 1px 20px;
-
+        padding: 80px 20px;
         text-align: center;
         font-family: 'Poppins', sans-serif;
     }
 
     .section-title {
         font-size: 2.8rem;
-        font-family: myFont;
         color: #2ea7ac;
-        margin-bottom: 30px;
-
+        margin-bottom: 50px;
     }
 
     .skills-wrapper {
@@ -587,136 +444,62 @@
         font-family: 'Poppins', sans-serif;
     }
 
-    .tech-tags span {
-        animation: popInTag 0.5s ease-in-out;
-    }
-
-    @keyframes popInTag {
-        from {
-            transform: scale(0.5);
-            opacity: 0;
-        }
-
-        to {
-            transform: scale(1);
-            opacity: 1;
-        }
-    }
-
-    .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(46, 167, 172, 0.5);
-    }
-
-    .projects-section h2 {
-        font-size: 3rem;
-        font-family: 'myfont';
-        background: linear-gradient(90deg, #2ea7ac, #20b2aa);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 60px;
-    }
-
-    .project-image img {
-        height: 140px;
-        object-fit: cover;
-    }
-
     .projects-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto;
+        max-width: 1100px;
+        margin: auto;
     }
 
-
     .project-card {
-        background-color: #ffffff;
-        border-radius: 18px;
-        overflow: hidden;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        display: flex;
-        flex-direction: column;
+        background-color: white;
+        border-radius: 15px;
+        padding: 25px 30px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        transition: transform 0.3s ease;
         text-align: left;
-        height: 360px;
     }
 
     .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        transform: translateY(-8px);
     }
 
-    .project-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-    }
-
-    .project-card:hover .project-image img {
-        transform: scale(1.05);
-    }
-
-    .project-body {
-        height: 30%;
-        padding: 12px 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    .project-title {
-        font-size: 1.2rem;
-        font-weight: 600;
+    .project-header h3 {
+        font-size: 1.4rem;
         color: #2ea7ac;
-        margin-bottom: 4px;
+        margin-bottom: 10px;
     }
 
     .project-desc {
-        font-size: 0.95rem;
-        color: #000000;
-        line-height: 1.6;
-    }
-
-    @media (max-width: 768px) {
-        .project-card {
-            height: 320px;
-        }
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 15px;
     }
 
     .tech-tags {
-        display: flex;
-        flex-wrap: wrap;
-        /* gap: 8px; */
+        margin-bottom: 15px;
     }
 
     .tech-tags span {
-        /* background-color: #2ea7ac; */
-        color: #000000;
-        padding: 5px 12px;
-        /* border-radius: 20px; */
-        font-size: 0.75rem;
-        font-weight: 500;
-        transition: background-color 0.3s ease;
-        text-align: center;
-        justify-content: center;
-    }
-
-    .project-links {
-        display: flex;
-        gap: 10px;
-        margin-top: 10px;
+        display: inline-block;
+        background-color: #2ea7ac;
+        color: white;
+        font-size: 0.85rem;
+        padding: 5px 10px;
+        border-radius: 20px;
+        margin: 3px;
     }
 
     .project-links a {
-        padding: 8px 14px;
-        border-radius: 6px;
+        display: inline-block;
         background-color: #2ea7ac;
-        color: #fff;
+        color: white;
         text-decoration: none;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        padding: 8px 15px;
+        border-radius: 8px;
+        margin-right: 10px;
         transition: background-color 0.3s ease;
     }
 
@@ -724,55 +507,25 @@
         background-color: #238b91;
     }
 
+    body.dark .projects-section {
+        background-color: #1f1f1f;
+    }
+
     body.dark .project-card {
         background-color: #2a2a2a;
     }
 
-    body.dark .project-title {
+    body.dark .project-header h3 {
         color: #2ea7ac;
     }
 
     body.dark .project-desc,
     body.dark .tech-tags span {
         color: #ccc;
+    }
+
+    body.dark .tech-tags span {
         background-color: #2ea7ac;
-    }
-
-    .project-image {
-        height: 70%;
-        width: 100%;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .project-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(46, 167, 172, 0.8);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-    }
-
-    .project-card:hover .project-overlay {
-        opacity: 1;
-    }
-
-    .project-overlay a {
-        background: white;
-        color: #2ea7ac;
-        padding: 8px 12px;
-        border-radius: 5px;
-        font-size: 0.9rem;
-        text-decoration: none;
-        font-weight: 600;
     }
 </style>
 <!-- contact form -->
@@ -786,7 +539,6 @@
 
     .contact-title {
         font-size: 2.5rem;
-        font-family: myFont;
         color: #2ea7ac;
         margin-bottom: 10px;
     }
@@ -963,7 +715,7 @@
             <a href="#skills" class="nav-link">Skills</a>
             <a href="#projects" class="nav-link">Projects</a>
             <a href="#contact" class="nav-link">Contact</a>
-
+            <button id="theme-toggle" aria-label="Toggle Theme">🌓</button>
         </div>
     </nav>
     <main class="scroll-container">
@@ -1002,62 +754,43 @@
             </div>
         </section>
         <!-- timeline -->
-        <section id="timeline" class="timeline-clean-section">
+        <section class="timeline-clean-section" id="timeline">
             <h2 class="timeline-clean-heading">My Journey</h2>
             <div class="timeline-creative-wrapper">
-                <div class="timeline-circle" >
-                    <i class="bi bi-mortarboard-fill"></i>
-                </div>
-                <div class="timeline-creative-item left" data-aos="fade-up">
 
+                <div class="timeline-creative-item left" data-aos="fade-right">
                     <div class="timeline-creative-content">
-
+                        <h4 class="timeline-clean-year">2019 – 2023</h4>
                         <p>
-                            <strong>Computer Science (B.Tech)</strong><br>
-                            <span style="color: #888;">SRM University | 2019-2023</span><br>
-                            CGPA: 8.86<br><br>
-                            <strong>Courses:</strong> Statistical Machine Learning, Fundamentals of Statistical
-                            Learning, Data Processing at Scale, Data Mining, Artificial Intelligence, Intro to Natural
-                            Language Processing
+                             Completed B.Tech in Computer Science from SRM University with 8.86 CGPA. Built core
+                            skills in algorithms, DBMS, OOP, and began my interest in full-stack development.
                         </p>
                     </div>
                 </div>
 
-                <div class="timeline-circle1" >
-                    <i class="bi bi-briefcase-fill"></i>
-                </div>
-                <div class="timeline-creative-item right" data-aos="fade-up" data-aos-delay="100">
+                <div class="timeline-creative-item right" data-aos="fade-left">
                     <div class="timeline-creative-content">
+                        <h4 class="timeline-clean-year">2024</h4>
                         <p>
-                            <strong>WebApp Developer Intern</strong><br>
-                            <span style="color: #888;">Indra Institute Of Education | 2024</span><br>
-                            <br>
-                            <strong>Duty:</strong> Worked as a Full Stack Developer Intern at Indra Institute of
-                            Education. Built student
+                             Worked as a Full Stack Developer Intern at Indra Institute of Education. Built student
                             management systems using Flask, SQL, HTML/CSS, and gained team collaboration skills.
                         </p>
                     </div>
                 </div>
-                <div class="timeline-circle2" >
-                    <i class="bi bi-mortarboard-fill"></i>
-                </div>
-                <div class="timeline-creative-item left" data-aos="fade-up" data-aos-delay="200">
+
+                <div class="timeline-creative-item left" data-aos="fade-right">
                     <div class="timeline-creative-content">
+                        <h4 class="timeline-clean-year">2024 – Present</h4>
                         <p>
-                            <strong>Information Technology (MS)</strong><br>
-                            <span style="color: #888;">Arizona State University | 2024-2026</span><br>
-                            CGPA: 3.89<br><br>
-                            <strong>Courses:</strong> Advanced Big Data Analytics/AI,
-                            Advanced Information Systems Security, Analyzing Big Data, Advanced Database Management
-                            Systems, Data Visualization & Reporting for IT.
+                             Pursuing Master’s in Information Technology at Arizona State University, focusing on
+                            machine learning, cloud computing, and full-stack app development with real-time data
+                            processing.
                         </p>
                     </div>
                 </div>
 
             </div>
         </section>
-
-
         <!-- skill -->
         <section class="skills-section" id="skills">
             <h2 class="section-title">Technical Skills</h2>
@@ -1093,88 +826,103 @@
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
 
-                <!-- Satellite Image Classification -->
-                <div class="project-card" data-aos="zoom-in">
-                    <div class="project-image">
-                        <img src="/images/satellite.png" alt="Satellite Classification">
-                        <div class="project-overlay">
-                            <a href="https://drive.google.com/file/d/1rBIXVa2b17KNjKYWtcizbah-e5L8If57/view"
-                                target="_blank">Certificate</a>
-                            <a href="https://drive.google.com/file/d/1XSeKC1ZVC_bWcdcw0MGp0aZVov55Kaog/view?usp=drive_link"
-                                target="_blank">Report</a>
-                        </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Satellite Image Classification</h3>
+                        <p class="project-desc">A deep learning model that classifies satellite images using ResNet,
+                            achieving over 90% accuracy.</p>
                     </div>
-
-                    <div class="project-body">
-                        <h3 class="project-title">Satellite Image Classification</h3>
-                        <div class="tech-tags">
-                            <span>Python</span><span>TensorFlow</span><span>ResNet</span><span>Deep Learning</span>
-                        </div>
+                    <div class="tech-tags">
+                        <span>Python</span>
+                        <span>TensorFlow</span>
+                        <span>ResNet</span>
+                        <span>Deep Learning</span>
                     </div>
-                </div>
-
-                <!-- E-Commerce Web App -->
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="project-image">
-                        <img src="/images/e-commerce.png" alt="e-commerce">
-                        <div class="project-overlay">
-                            <a href="https://github.com/naveenmayathevar/e-commerce" target="_blank">GitHub</a>
-                            <a href="https://e-commerce-0r8a.onrender.com/" target="_blank">View</a>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3 class="project-title">Flask E-Commerce Web App</h3>
-                        <div class="tech-tags"> <span>Python</span>
-                            <span>Flask</span>
-                            <span>SQLite</span>
-                            <span>Front End Development</span>
-                            <span>Git, Github</span>
-                            <span>Render</span>
-                        </div>
-
-
-
+                    <div class="project-links">
+                        <a href="https://drive.google.com/file/d/1rBIXVa2b17KNjKYWtcizbah-e5L8If57/view"
+                            target="_blank">Certificate</a>
+                        <a href="https://drive.google.com/file/d/1XSeKC1ZVC_bWcdcw0MGp0aZVov55Kaog/view?usp=drive_link"
+                            target="_blank">Report</a>
                     </div>
                 </div>
 
-                <!-- Flower Classifier -->
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="project-image">
-                        <img src="/images/flower.png" alt="e-commerce">
-                        <div class="project-overlay">
-                            <a href="https://github.com/naveenmayathevar/flower-classifier" target="_blank">GitHub</a>
-                        </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Flask E-Commerce Web App</h3>
+                        <p class="project-desc">
+                            Full-featured e-commerce application with user authentication, product management, cart,
+                            checkout, admin dashboard, and real-time order history—built using Flask and SQLAlchemy with
+                            image handling.
+                        </p>
                     </div>
-                    <div class="project-body">
-                        <h3 class="project-title">Flower Classification Web App</h3>
+                    <div class="tech-tags">
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>SQLite</span>
+                        <span>Front End Development</span>
+                        <span>Git, Github</span>
+                        <span>Render</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/naveenmayathevar/e-commerce" target="_blank">GitHub</a>
+                        <a href="https://e-commerce-0r8a.onrender.com/" target="_blank">View Project</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Flower Classification Web App</h3>
+                        <p class="project-desc">
+                            A machine learning-powered web application that classifies 5 different flowers using the
+                            MobileNetV2 CNN
+                            model. Users can upload images and receive real-time predictions with a clean Flask
+                            interface.
+                        </p>
+                    </div>
+                    <div class="tech-tags">
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>TensorFlow</span>
+                        <span>Keras</span>
+                        <span>NumPy</span>
+                        <span>Gunicorn</span>
+                        <span>gdown</span>
+                        <span>Render</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/naveenmayathevar/flower-classifier" target="_blank">
+                            GitHub</a>
 
-                        <div class="tech-tags">
-                            <span>Python</span><span>Flask</span><span>Keras</span><span>TensorFlow</span><span>Gunicorn</span><span>Render</span>
-                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Virtual Mouse with Hand Gesture Control</h3>
+                        <p class="project-desc">
+                            A real-time virtual mouse application built using Python, OpenCV, and MediaPipe. It allows
+                            users to control the mouse using hand gestures like pinch (left-click), fist (right-click)
+                            .Includes a Tkinter-based GUI for gesture demos and user
+                            configuration.
+                        </p>
+                    </div>
+                    <div class="tech-tags">
+                        <span>Python</span>
+                        <span>OpenCV</span>
+                        <span>MediaPipe</span>
+                        <span>Tkinter</span>
+                        <span>Computer Vision</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/naveenmayathevar/virtual-mouse" target="_blank">GitHub</a>
                     </div>
                 </div>
 
-                <!-- Virtual Mouse -->
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="project-image">
-                        <img src="/images/hand.png" alt="e-commerce">
-                        <div class="project-overlay">
-                            <a href="https://github.com/naveenmayathevar/virtual-mouse" target="_blank">GitHub</a>
-                        </div>
-                    </div>
-                    <div class="project-body">
-                        <h3 class="project-title">Virtual Mouse with Hand Gestures</h3>
 
-                        <div class="tech-tags">
-                            <span>Python</span><span>OpenCV</span><span>MediaPipe</span><span>Tkinter</span><span>Computer
-                                Vision</span>
-                        </div>
 
-                    </div>
-                </div>
+
+
+
 
             </div>
-
         </section>
         <!-- contact -->
         <section class="contact-section" id="contact">
@@ -1223,15 +971,11 @@
 
 
     </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100,
+        const toggleBtn = document.getElementById('theme-toggle');
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
         });
     </script>
-
 
 </body>
